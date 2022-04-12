@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Image from 'next/image'
 import { FiArrowUpRight } from 'react-icons/fi';
 import { AiOutlineDown } from 'react-icons/ai';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 import polygonLogo from '../assets/polygonLogo.png';
 import uniswapLogo from '../assets/uniswapLogo.png';
+import { TransactionContext } from '../context/TransactionContext';
 
 const style = {
     wrapper: `p-4 w-screen flex justify-between items-center`,
@@ -22,6 +23,9 @@ const style = {
 }
 function Header() {
     const [ selectedNav, setSelectedNav ] = useState('swap');
+    const { connectWallet, currentAccount, SAMPLE_MESSAGE } = useContext(TransactionContext);
+
+    console.log({connectWallet, currentAccount, SAMPLE_MESSAGE});
 
   return (
     <div className={style.wrapper}>
@@ -46,14 +50,6 @@ function Header() {
           >
             Pool
           </div>
-          {/* <div
-            onClick={() => setSelectedNav('vote')}
-            className={`${style.navItem} ${
-              selectedNav === 'vote' && style.activeNavItem
-            }`}
-          >
-            Vote
-          </div> */}
           <a
             href="https://info.uniswap.org/#/"
             target="_blank"
