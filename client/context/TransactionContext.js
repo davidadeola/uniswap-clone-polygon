@@ -8,7 +8,6 @@ if (typeof window !== 'undefined' ) {
     eth = window.ethereum
 }
 
-const SAMPLE_MESSAGE = 'This is a sample message'
 
 export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState()
@@ -31,7 +30,6 @@ export const TransactionProvider = ({ children }) => {
       value={{
         currentAccount,
         connectWallet,
-        SAMPLE_MESSAGE
       }}
     >
       {children}

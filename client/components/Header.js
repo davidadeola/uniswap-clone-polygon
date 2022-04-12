@@ -23,9 +23,9 @@ const style = {
 }
 function Header() {
     const [ selectedNav, setSelectedNav ] = useState('swap');
-    const { connectWallet, currentAccount, SAMPLE_MESSAGE } = useContext(TransactionContext);
+    const { connectWallet, currentAccount } = useContext(TransactionContext);
 
-    console.log({connectWallet, currentAccount, SAMPLE_MESSAGE});
+    console.log({connectWallet, currentAccount});
 
   return (
     <div className={style.wrapper}>
