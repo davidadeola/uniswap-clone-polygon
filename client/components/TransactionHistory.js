@@ -2,7 +2,7 @@ import React from 'react'
 
 function TransactionHistory() {
   return (
-    <div></div>
+    <div><h1>Transaction History</h1></div>
   )
 }
 
