@@ -45,6 +45,21 @@ export const TransactionProvider = ({ children }) => {
     }
   }
 
+  const sendTransaction = async (
+    metamask = eth,
+    connectedAccount = currentAccount
+  ) => {
+    try {
+      if (!metamask) return alert('Please install metamask')
+      const { addressTo, amount } = formData
+      const transactionContract = getEthereumContract()
+
+      const parsedAmount = ethers.utils.parseEther(amount)
+    } catch {
+      
+    }
+  }
+
   return (
     <TransactionContext.Provider
       value={{
