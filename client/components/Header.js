@@ -71,7 +71,7 @@ function Header() {
               width={20}
             />
           </div>
-          <p>Polygon(M)</p>
+          <p>Polygon</p>
           <div className={style.buttonIconContainer}>
             <AiOutlineDown />
           </div>
