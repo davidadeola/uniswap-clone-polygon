@@ -55,8 +55,39 @@ export const TransactionProvider = ({ children }) => {
       const transactionContract = getEthereumContract()
 
       const parsedAmount = ethers.utils.parseEther(amount)
-    } catch {
-      
+
+      await metamask.request({
+        method: 'eth_sendTransaction',
+        params: [
+          {
+            from: connectedAccount,
+            to: addressTo,
+            gas: '0x7EF40', //520000 Gwei
+            value: parsedAmount._hex,
+          },
+        ],
+      })
+
+      const transactionHash = await transactionContract.publishTransaction(
+        addressTo,
+        parsedAmount,
+        `Transferrring ETH ${parsedAmount} to ${addressTo}`,
+        'TRANSFER'
+      )
+
+      setIsLoading(true)
+
+      //Database
+      // await transactionHash.wait(
+      //   transactionHash.hash,
+      //   amount,
+      //   connectedAccount,
+      //   addressTo
+      // )
+
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error)
     }
   }
 
