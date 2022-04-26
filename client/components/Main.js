@@ -1,7 +1,9 @@
+import { useContext } from 'react';
 import Image from 'next/image';
 import { MdOutlineSettings } from 'react-icons/md';
 import { AiOutlineDown } from 'react-icons/ai';
 import polygonLogoFull from '../assets/polygonLogoFull.png';
+import { TransactionContext } from '../context/TransactionContext';
 
 const style = {
     wrapper: `w-screen flex items-center justify-center mt-14`,
@@ -18,6 +20,17 @@ const style = {
 }
 
 function Main() {
+  const {formData, handleChange, sendTransaction} = useContext(TransactionContext)
+
+  const handleSubmit = async (e) => {
+    const { addressTo, amount } = formData
+    e.preventDefault()
+
+    if (!addressTo || !amount) return
+
+    sendTransaction()
+  }
+
   return (
     <div className={style.wrapper}>
       <div className={style.content}>

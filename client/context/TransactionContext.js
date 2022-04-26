@@ -11,6 +11,11 @@ if (typeof window !== 'undefined' ) {
 
 export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState()
+  const [ isLoading, setIsLoading ] = useState(false)
+  const [ formData, setFormData ] = useState({
+    addressTo: '',
+    amount: '',
+  })
 
   useEffect(() => {
     checkIfWalletIsConnected()
@@ -91,11 +96,17 @@ export const TransactionProvider = ({ children }) => {
     }
   }
 
+  const handleChange = (event, name) => {
+    setFormData((prevState) => ({ ...prevState, [name]: event.target.value }))
+  }
+
   return (
     <TransactionContext.Provider
       value={{
         currentAccount,
         connectWallet,
+        sendTransaction,
+        handleChange,
       }}
     >
       {children}
