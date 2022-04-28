@@ -82,13 +82,13 @@ export const TransactionProvider = ({ children }) => {
 
       setIsLoading(true)
 
-      //Database
-      // await transactionHash.wait(
-      //   transactionHash.hash,
-      //   amount,
-      //   connectedAccount,
-      //   addressTo
-      // )
+      Database
+      await transactionHash.wait(
+        transactionHash.hash,
+        amount,
+        connectedAccount,
+        addressTo
+      )
 
       setIsLoading(false)
     } catch (error) {
