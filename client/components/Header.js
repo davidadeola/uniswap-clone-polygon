@@ -56,7 +56,7 @@ function Header() {
             rel="noreferrer"
           >
             <div className={style.navItem}>
-              Charts <FiArrowUpRight />
+              Chart<FiArrowUpRight />
             </div>
           </a>
         </div>
